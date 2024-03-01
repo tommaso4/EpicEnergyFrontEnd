@@ -1,0 +1,27 @@
+<div id="formContent">
+  <h1>Login</h1>
+  <form [formGroup]="login">
+    <div>
+      <label for="userName">UserName</label>
+      <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div *ngIf="validAndTouched('username')">Username required</div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" class="form-control" formControlName="password">
+    </div>
+    <div *ngIf="validAndTouched('password')">
+      <p>Not a valid password. It must contains:</p>
+      <ul>
+        <li>At least 8 characters</li>
+        <li>A number</li>
+        <li>An uppercase letter</li>
+        <li>A lowercase letter</li>
+      </ul>
+    </div>
+    <div>
+      <button [disabled]="!login.valid" (click)="submit()" class="mt-2">Log in</button>
+    </div>
+    <div *ngIf="notLogged">{{errString}}</div>
+  </form>
+</div>

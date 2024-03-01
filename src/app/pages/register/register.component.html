@@ -1,0 +1,50 @@
+<div id="formContent">
+  <h1>Registration</h1>
+  <form [formGroup]="form">
+    <div>
+      <label for="nome">nome</label>
+      <input  type="text" class="form-control" formControlName="nome">
+    </div>
+    <div *ngIf="isValidAndTouched('nome')"><p class="alert alert-warning">nome Required</p> </div>
+    <div>
+      <label for="cognome">cognome</label>
+      <input type="text" class="form-control"  formControlName="cognome">
+    </div>
+    <div *ngIf="isValidAndTouched('cognome')"><p class="alert alert-warning">cognome Required</p></div>
+    <div>
+      <label for="username">username</label>
+      <input type="text"  class="form-control" formControlName="username">
+    </div>
+    <div *ngIf="isValidAndTouched('username')"><p class="alert alert-warning">username Required</p></div>
+    <div>
+      <label for="email">email</label>
+      <input type="text"  class="form-control" formControlName="email">
+    </div>
+    <div *ngIf="isValidAndTouched('email') && !emailExist" ><p class="alert alert-warning">Email not valid</p></div>
+    <div *ngIf="emailExist">This email already exist</div>
+    <div>
+      <label for="password1">Password1</label>
+      <input type="password"  class="form-control" formControlName="password1">
+    </div>
+    <div *ngIf="isValidAndTouched('password1')" class="alert alert-warning">
+      <p>Not a valid password. It must contains:</p>
+      <ul>
+        <li>At least 8 characters</li>
+        <li>A number</li>
+        <li>An uppercase letter</li>
+        <li>A lowercase letter</li>
+      </ul>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password"  class="form-control" formControlName="password">
+    </div>
+    <div *ngIf="isValidAndTouched('password')">
+      {{getCustomMessage('password')}}
+    </div>
+    <div>
+      <button [disabled]="!form.valid"  class="mt-2" (click)="submit()">Sign in</button>
+    </div>
+  </form>
+</div>
+
