@@ -14,13 +14,11 @@ export class CompaniesComponent implements OnInit {
 
   constructor(
     private companisSvc: CompaniesSvcService
-  ){}
+  ) { }
   ngOnInit(): void {
     this.companisSvc.getAllCompanies().subscribe(
       res => {
-        console.log(res)
         this.list = this.getCompanies(res)
-        console.log(this.list)
       },
       error => {
         console.log(error);
@@ -28,9 +26,9 @@ export class CompaniesComponent implements OnInit {
     );
   }
 
-getCompanies(res:any): ICompanies[]{
-  return res.response.content
-}
+  getCompanies(res: any): ICompanies[] {
+    return res.response.content
+  }
 
 
 }

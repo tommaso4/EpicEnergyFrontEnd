@@ -1,9 +1,10 @@
 <div class="d-flex justify-content-between align-items-center mx-4">
   <div>
-    <h3>EpicEnergy</h3>
+    <h3><a routerLink="">CRM-Energy</a></h3>
   </div>
   <div>
-    <a routerLink="/register" class="pe-3">Register</a>
-    <a routerLink="/login"> Login</a>
+    <a routerLink="/register" class="pe-3" *ngIf="!isLogged">Register</a>
+    <a routerLink="/login" *ngIf="!isLogged"> Login</a>
+    <a routerLink="/login" class="ps-3" *ngIf="isLogged" (click) ="logOut()">Logout</a>
   </div>
 </div>

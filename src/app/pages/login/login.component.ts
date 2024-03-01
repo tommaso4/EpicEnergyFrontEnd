@@ -31,13 +31,13 @@ export class LoginComponent implements OnInit {
       password: this.fb.control(null, [Validators.required, Validators.pattern(this.pswRegex)])
     })
   }
+
   submit() {
     const user: ILogin = this.login.value;
     this.LS.login(user).subscribe(
       (res:any) => {
         const token: string = this.takeToken(res)
         this.tokenSvc.setToken(token)
-        const str : string | null = this.tokenSvc.getToken();
         this.router.navigate(['/companies'])
       },
       error => {

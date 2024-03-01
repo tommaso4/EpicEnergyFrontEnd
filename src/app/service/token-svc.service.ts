@@ -7,6 +7,7 @@ export class TokenSvcService {
 
   tokek: string | null = null;
 
+
   constructor() { }
 
   setToken(token: string): void {
@@ -17,5 +18,9 @@ export class TokenSvcService {
   getToken(): string | null {
     this.tokek = localStorage.getItem('token');
     return this.tokek;
+  }
+
+  removeToken():void {
+    localStorage.removeItem('token')
   }
 }
